@@ -16,3 +16,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/works', function () {
+    \App\ThisWorksAggregateRoot::retrieve('uuid-1')
+        ->doSomething('something')
+        ->persist();
+
+    return 'DONE!';
+});
+
+Route::get('/fails', function () {
+    \App\ThisFailsAggregateRoot::retrieve('uuid-2')
+        ->doSomething('something')
+        ->persist();
+
+    return 'DONE!';
+});
